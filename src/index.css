@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* WP RESCUE MISSION SPACE DESIGN SYSTEM
+Epic space odyssey color palette and design tokens
+All colors MUST be HSL for proper theming.
+*/
+
+@layer base {
+  :root {
+    /* === DEEP SPACE BACKGROUNDS === */
+    --background: 214 100% 3%;           /* Deep Space #000814 */
+    --foreground: 0 0% 100%;             /* Star White #ffffff */
+
+    --card: 214 100% 7%;                 /* Nebula Purple #001d3d */
+    --card-foreground: 0 0% 100%;        
+
+    --popover: 214 100% 7%;              
+    --popover-foreground: 0 0% 100%;     
+
+    /* === COSMIC ACCENT COLORS === */
+    --primary: 197 100% 41%;             /* Cosmic Cyan #00b4d8 */
+    --primary-foreground: 214 100% 3%;   
+
+    --secondary: 211 100% 20%;           /* Stellar Blue #003566 */
+    --secondary-foreground: 0 0% 100%;   
+
+    --muted: 214 100% 7%;                /* Nebula Purple variant */
+    --muted-foreground: 197 100% 70%;    /* Light cosmic cyan */
+
+    --accent: 160 100% 52%;              /* Safety Green #06ffa5 */
+    --accent-foreground: 214 100% 3%;    
+
+    /* === MISSION CRITICAL COLORS === */
+    --destructive: 350 100% 63%;         /* Alert Red #ff0054 */
+    --destructive-foreground: 0 0% 100%; 
+
+    /* === RESCUE MISSION UI === */
+    --rocket-orange: 14 100% 60%;        /* Rocket Orange #ff6b35 */
+    --safety-green: 160 100% 52%;        /* Safety Green #06ffa5 */
+    --alert-red: 350 100% 63%;           /* Alert Red #ff0054 */
+    
+    /* === SPACE INTERFACE ELEMENTS === */
+    --border: 197 100% 25%;              /* Cosmic cyan border */
+    --input: 214 100% 7%;                /* Dark input background */
+    --ring: 197 100% 41%;                /* Cosmic cyan focus ring */
+
+    /* === SPACE INTERFACE GEOMETRY === */
+    --radius: 0.5rem;
+    
+    /* === COSMIC GRADIENTS === */
+    --gradient-nebula: linear-gradient(135deg, hsl(214 100% 3%), hsl(214 100% 7%));
+    --gradient-cosmic: linear-gradient(135deg, hsl(197 100% 41%), hsl(160 100% 52%));
+    --gradient-rescue: linear-gradient(135deg, hsl(14 100% 60%), hsl(350 100% 63%));
+    --gradient-space: linear-gradient(180deg, hsl(214 100% 3%) 0%, hsl(214 100% 7%) 100%);
+    
+    /* === SPACE EFFECTS === */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-rescue: 0 0 30px hsl(var(--rocket-orange) / 0.4);
+    --shadow-danger: 0 0 20px hsl(var(--alert-red) / 0.5);
+    
+    /* === ANIMATIONS === */
+    --transition-space: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-rescue: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-cosmic;
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(197 100% 41% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(160 100% 52% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(14 100% 60% / 0.1) 0%, transparent 50%);
+    overflow-x: hidden;
+  }
+
+  /* Space particle animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+
+  @keyframes drift {
+    0% { transform: translateX(-100vw) rotate(0deg); }
+    100% { transform: translateX(100vw) rotate(360deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { 
+      opacity: 1;
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.8;
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes rescue-beam {
+    0% { opacity: 0.3; transform: scaleX(0); }
+    50% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 0.3; transform: scaleX(0); }
+  }
+
+  /* Ensure proper text rendering in space theme */
+  h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Custom scrollbar for space theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
