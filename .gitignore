@@ -27,3 +27,27 @@ dist-ssr
 .env
 .env.local
 .env.production
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.astro/
+
+# Claude agent files — NEVER commit these
+.claude/
+*.claude
+.claude.json
+
+# Environment
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
